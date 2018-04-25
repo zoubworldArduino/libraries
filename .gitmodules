@@ -1,0 +1,30 @@
+[submodule "Zeeprom"]
+	path = Zeeprom
+	url = https://github.com/zoubworldArduino/Zeeprom.git
+[submodule "ZEncoder"]
+	path = ZEncoder
+	url = https://github.com/zoubworldArduino/ZEncoder.git
+[submodule "ZSharpIR"]
+	path = ZSharpIR
+	url = https://github.com/zoubworldArduino/ZSharpIR.git
+[submodule "Zmotor3"]
+	path = Zmotor3
+	url = https://github.com/zoubworldArduino/Zmotor3.git
+[submodule "ZMotor2"]
+	path = ZMotor2
+	url = https://github.com/zoubworldArduino/ZMotor2.git
+[submodule "ZMCP23017"]
+	path = ZMCP23017
+	url = https://github.com/zoubworldArduino/ZMCP23017.git
+[submodule "ZPCA9685"]
+	path = ZPCA9685
+	url = https://github.com/zoubworldArduino/ZPCA9685.git
+[submodule "WireUtility"]
+	path = WireUtility
+	url = https://github.com/zoubworldArduino/WireUtility.git
+[submodule "PinExtender"]
+	path = PinExtender
+	url = https://github.com/zoubworldArduino/PinExtender.git
+[submodule "ZCmdMotor"]
+	path = ZCmdMotor
+	url = https://github.com/zoubworldArduino/ZCmdMotor.git
