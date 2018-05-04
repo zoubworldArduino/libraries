@@ -28,3 +28,6 @@
 [submodule "ZCmdMotor"]
 	path = ZCmdMotor
 	url = https://github.com/zoubworldArduino/ZCmdMotor.git
+[submodule "Zsamba"]
+	path = Zsamba
+	url = https://github.com/zoubworldArduino/Zsamba.git
