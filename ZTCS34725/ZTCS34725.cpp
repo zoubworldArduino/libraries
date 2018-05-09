@@ -46,15 +46,15 @@ float powf(const float x, const float y)
 /**************************************************************************/
 void ZTCS34725::write8 (uint8_t reg, uint32_t value)
 {
-  Wire.beginTransmission(TCS34725_ADDRESS);
+_i2c->beginTransmission(TCS34725_ADDRESS);
   #if ARDUINO >= 100
-  Wire.write(TCS34725_COMMAND_BIT | reg);
-  Wire.write(value & 0xFF);
+  _i2c->write(TCS34725_COMMAND_BIT | reg);
+  _i2c->write(value & 0xFF);
   #else
-  Wire.send(TCS34725_COMMAND_BIT | reg);
-  Wire.send(value & 0xFF);
+  _i2c->send(TCS34725_COMMAND_BIT | reg);
+  _i2c->send(value & 0xFF);
   #endif
-  Wire.endTransmission();
+  _i2c->endTransmission();
 }
 
 /**************************************************************************/
@@ -64,19 +64,19 @@ void ZTCS34725::write8 (uint8_t reg, uint32_t value)
 /**************************************************************************/
 uint8_t ZTCS34725::read8(uint8_t reg)
 {
-  Wire.beginTransmission(TCS34725_ADDRESS);
+  _i2c->beginTransmission(TCS34725_ADDRESS);
   #if ARDUINO >= 100
-  Wire.write(TCS34725_COMMAND_BIT | reg);
+  _i2c->write(TCS34725_COMMAND_BIT | reg);
   #else
-  Wire.send(TCS34725_COMMAND_BIT | reg);
+  _i2c->send(TCS34725_COMMAND_BIT | reg);
   #endif
-  Wire.endTransmission();
+  _i2c->endTransmission();
 
-  Wire.requestFrom(TCS34725_ADDRESS, 1);
+  _i2c->requestFrom(TCS34725_ADDRESS, 1);
   #if ARDUINO >= 100
-  return Wire.read();
+  return _i2c->read();
   #else
-  return Wire.receive();
+  return _i2c->receive();
   #endif
 }
 
@@ -89,21 +89,21 @@ uint16_t ZTCS34725::read16(uint8_t reg)
 {
   uint16_t x; uint16_t t;
 
-  Wire.beginTransmission(TCS34725_ADDRESS);
+  _i2c->beginTransmission(TCS34725_ADDRESS);
   #if ARDUINO >= 100
-  Wire.write(TCS34725_COMMAND_BIT | reg);
+  _i2c->write(TCS34725_COMMAND_BIT | reg);
   #else
-  Wire.send(TCS34725_COMMAND_BIT | reg);
+  _i2c->send(TCS34725_COMMAND_BIT | reg);
   #endif
-  Wire.endTransmission();
+  _i2c->endTransmission();
 
-  Wire.requestFrom(TCS34725_ADDRESS, 2);
+  _i2c->requestFrom(TCS34725_ADDRESS, 2);
   #if ARDUINO >= 100
-  t = Wire.read();
-  x = Wire.read();
+  t = _i2c->read();
+  x = _i2c->read();
   #else
-  t = Wire.receive();
-  x = Wire.receive();
+  t = _i2c->receive();
+  x = _i2c->receive();
   #endif
   x <<= 8;
   x |= t;
@@ -181,7 +181,7 @@ boolean ZTCS34725::begin(TwoWire &MyWire)
   
   /* Make sure we're actually connected */
   uint8_t x = read8(TCS34725_ID);
-  Serial.println(x, HEX);
+  //Serial.println(x, HEX);
   if (x != 0x44)
   {
     return false;
@@ -332,13 +332,13 @@ void ZTCS34725::setInterrupt(boolean i) {
 }
 
 void ZTCS34725::clearInterrupt(void) {
-  Wire.beginTransmission(TCS34725_ADDRESS);
+  _i2c->beginTransmission(TCS34725_ADDRESS);
   #if ARDUINO >= 100
-  Wire.write(0x66);
+  _i2c->write(0x66);
   #else
-  Wire.send(0x66);
+  _i2c->send(0x66);
   #endif
-  Wire.endTransmission();
+  _i2c->endTransmission();
 }
 
 

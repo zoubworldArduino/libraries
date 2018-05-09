@@ -20,7 +20,7 @@ extern "C" {
   #include <string.h>
   #include <inttypes.h>
 }
-
+#define OUTPUT_LOW OUTPUT
 #include <TM1637Display.h>
 #include <Arduino.h>
 
