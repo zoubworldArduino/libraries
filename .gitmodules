@@ -31,3 +31,15 @@
 [submodule "Zsamba"]
 	path = Zsamba
 	url = https://github.com/zoubworldArduino/Zsamba.git
+[submodule "ZRos"]
+	path = ZRos
+	url = https://github.com/zoubworldArduino/ZRos.git 
+[submodule "ZServo"]
+	path = ZServo
+	url = https://github.com/zoubworldArduino/ZServo.git
+[submodule "ZServoPCA9685"]
+	path = ZServoPCA9685
+	url = https://github.com/zoubworldArduino/ZServoPCA9685.git
+[submodule "ZOpticalSensor"]
+	path = ZOpticalSensor
+	url = https://github.com/zoubworldArduino/ZOpticalSensor.git
