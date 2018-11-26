@@ -43,3 +43,6 @@
 [submodule "ZOpticalSensor"]
 	path = ZOpticalSensor
 	url = https://github.com/zoubworldArduino/ZOpticalSensor.git
+[submodule "Rosserial_Arduino_Library"]
+	path = Rosserial_Arduino_Library
+	url = https://github.com/zoubworldArduino/rosserial_arduino_lib.git
