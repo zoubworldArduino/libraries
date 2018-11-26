@@ -46,3 +46,6 @@
 [submodule "Rosserial_Arduino_Library"]
 	path = Rosserial_Arduino_Library
 	url = https://github.com/zoubworldArduino/rosserial_arduino_lib.git
+[submodule "ZTCS34725"]
+	path = ZTCS34725
+	url = https://github.com/zoubworldArduino/ZTCS34725.git
