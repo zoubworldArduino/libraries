@@ -49,3 +49,12 @@
 [submodule "ZTCS34725"]
 	path = ZTCS34725
 	url = https://github.com/zoubworldArduino/ZTCS34725.git
+[submodule "YDLidar"]
+	path = YDLidar
+	url = https://github.com/EAIBOT/ydlidar_arduino.git
+[submodule "mojo"]
+	path = mojo
+	url = https://github.com/embmicro/mojo-arduino.git
+[submodule "mojo-base-project"]
+	path = mojo-base-project
+	url = https://github.com/embmicro/mojo-base-project.git
