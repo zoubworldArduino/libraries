@@ -25,7 +25,7 @@ class PID
         double, double, double, int);     //   Setpoint.  Initial tuning parameters are also set here
 	
     void SetMode(int Mode);               // * sets PID to either Manual (0) or Auto (non-0)
-
+    
     bool Compute();                       // * performs the PID calculation.  it should be
                                           //   called every time loop() cycles. ON/OFF and
                                           //   calculation frequency can be set using SetMode
@@ -80,7 +80,7 @@ class PID
                                   //   what these values are.  with pointers we'll just know.
 			  
 	unsigned long lastTime;
-	double outputSum, lastInput;
+	double outputSum, lastInput,lastSetpoint;
 
 	unsigned long SampleTime;
 	double outMin, outMax;

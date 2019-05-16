@@ -23,12 +23,13 @@ PID::PID(double* Input, double* Output, double* Setpoint,
     myOutput = Output;
     myInput = Input;
     mySetpoint = Setpoint;
+    lastSetpoint=*Setpoint;
     inAuto = false;
 
     PID::SetOutputLimits(0, 255);				//default output limit corresponds to
 												//the arduino pwm limits
 
-    SampleTime = 100;							//default Controller Sample Time is 0.1 seconds
+    SampleTime = 100*1000;							//default Controller Sample Time is 0.1 seconds
 
     PID::SetControllerDirection(ControllerDirection);
     PID::SetTunings(Kp, Ki, Kd, POn);
@@ -48,11 +49,11 @@ myOutput = Output;
     myInput = Input;
     mySetpoint = Setpoint;
     inAuto = false;
-
+    lastSetpoint=*Setpoint;
     PID::SetOutputLimits(0, 255);				//default output limit corresponds to
 												//the arduino pwm limits
 
-    SampleTime = 100;							//default Controller Sample Time is 0.1 seconds
+    SampleTime = 100*1000;							//default Controller Sample Time is 0.1 seconds
 
     PID::SetControllerDirection(ControllerDirection);
     PID::SetTunings(Kp, Ki, Kd, P_ON_E);
@@ -70,7 +71,7 @@ myOutput = Output;
 bool PID::Compute()
 {
    if(!inAuto) return false;
-   unsigned long now = millis();
+   unsigned long now = micros();
    unsigned long timeChange = (now - lastTime);
    if(timeChange>=SampleTime)
    {
@@ -79,17 +80,27 @@ bool PID::Compute()
       double error = *mySetpoint - input;
       double dInput = (input - lastInput);
       outputSum+= (ki * error);
-
+      
+      if(lastSetpoint!=*mySetpoint)// when set point change adjust integral erreur
+      if(lastSetpoint>0)
+      outputSum=outputSum/lastSetpoint*(*mySetpoint);
+      /*
+      if(lastSetpoint!=*mySetpoint)
+      outputSum=0;
+      */
+      lastSetpoint=*mySetpoint;
       /*Add Proportional on Measurement, if P_ON_M is specified*/
-      if(!pOnE) outputSum-= kp * dInput;
+      if(!pOnE) 
+        outputSum-= kp * dInput;
 
       if(outputSum > outMax) outputSum= outMax;
       else if(outputSum < outMin) outputSum= outMin;
 
       /*Add Proportional on Error, if P_ON_E is specified*/
-	   double output;
-      if(pOnE) output = kp * error;
-      else output = 0;
+	   double output=0;//kp *(*mySetpoint)
+      if(pOnE) 
+        output += kp * error;
+      else output += 0;
 
       /*Compute Rest of PID Output*/
       output += outputSum - kd * dInput;
@@ -120,7 +131,7 @@ void PID::SetTunings(double Kp, double Ki, double Kd, int POn)
 
    dispKp = Kp; dispKi = Ki; dispKd = Kd;
 
-   double SampleTimeInSec = ((double)SampleTime)/1000;
+   double SampleTimeInSec = ((double)SampleTime)/1000000;
    kp = Kp;
    ki = Ki * SampleTimeInSec;
    kd = Kd / SampleTimeInSec;
@@ -145,6 +156,7 @@ void PID::SetTunings(double Kp, double Ki, double Kd){
  ******************************************************************************/
 void PID::SetSampleTime(int NewSampleTime)
 {
+  NewSampleTime=NewSampleTime*1000;//internaly in µS
    if (NewSampleTime > 0)
    {
       double ratio  = (double)NewSampleTime

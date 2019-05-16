@@ -58,3 +58,15 @@
 [submodule "mojo-base-project"]
 	path = mojo-base-project
 	url = https://github.com/embmicro/mojo-base-project.git
+[submodule "RGB-matrix-Panel"]
+	path = RGB-matrix-Panel
+	url = https://github.com/adafruit/RGB-matrix-Panel.git
+[submodule "PxMatrix"]
+	path = PxMatrix
+	url = https://github.com/2dom/PxMatrix.git
+[submodule "Adafruit-GFX-Library"]
+	path = Adafruit-GFX-Library
+	url = https://github.com/ehubin/Adafruit-GFX-Library.git
+[submodule "ros_lib"]
+	path = ros_lib
+	url = git@github.com:zoubata/rosserial_arduino.git
