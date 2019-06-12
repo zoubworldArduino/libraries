@@ -67,6 +67,9 @@
 [submodule "Adafruit-GFX-Library"]
 	path = Adafruit-GFX-Library
 	url = https://github.com/ehubin/Adafruit-GFX-Library.git
+[submodule "Adafruit-PWM-Servo-Driver-Library"]
+        path = Adafruit-PWM-Servo-Driver-Library
+        url = https://github.com/adafruit/Adafruit-PWM-Servo-Driver-Library.git
 [submodule "ros_lib"]
 	path = ros_lib
 	url = git@github.com:zoubata/rosserial_arduino.git
@@ -79,3 +82,7 @@
 [submodule "ZPID"]
 	path = ZPID
 	url = https://github.com/zoubworldArduino/ZPID.git
+
+[submodule "ZWireDevice"]
+        path = ZWireDevice
+        url = https://github.com/zoubworldArduino/ZWireDevice.git
