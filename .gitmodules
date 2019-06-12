@@ -76,3 +76,6 @@
 [submodule "ZMPU6050"]
 	path = ZMPU6050
 	url = https://github.com/zoubworldArduino/ZMPU6050.git
+[submodule "ZPID"]
+	path = ZPID
+	url = https://github.com/zoubworldArduino/ZPID.git
