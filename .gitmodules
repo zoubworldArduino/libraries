@@ -70,3 +70,9 @@
 [submodule "ros_lib"]
 	path = ros_lib
 	url = git@github.com:zoubata/rosserial_arduino.git
+[submodule "ZSwitchs"]
+	path = ZSwitchs
+	url = https://github.com/zoubworldArduino/ZSwitchs.git
+[submodule "ZMPU6050"]
+	path = ZMPU6050
+	url = https://github.com/zoubworldArduino/ZMPU6050.git
